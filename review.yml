@@ -1,0 +1,110 @@
+aid: stay-ai
+name: Stay AI
+review:
+  question: Does Stay AI expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-10'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Stay AI's public developer surface is a
+    request/response REST API over HTTPS (base https://api.retextion.com/api/v2)
+    authenticated with an X-RETEXTION-ACCESS-TOKEN header. Stay AI does deliver
+    asynchronous event notifications, but it does so via outbound HTTP webhooks
+    (POST to a merchant-configured URL, signed with a JWT in the
+    x-retextion-webhook-token header) - not a WebSocket or SSE transport. There
+    is no server-push socket on Stay AI's own API to model, so no AsyncAPI was
+    created.
+findings:
+  summary: |
+    Stay AI (formerly Retextion) does not publish a documented public WebSocket
+    API. Stay AI is a subscription retention and growth platform for Shopify DTC
+    brands. Its public API is documented at https://docs.stay.ai, is pure
+    request/response REST over HTTPS at base https://api.retextion.com/api/v2,
+    and is authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN
+    header (created from Settings > API keys in the Stay dashboard). The API
+    covers subscriptions, recurring orders, selling plan groups, product
+    catalog, the customer portal, account settings, bulk data export, and
+    webhook subscription management. Asynchronous events are delivered by
+    outbound HTTP webhooks - the merchant registers a URL and event type
+    (SUBSCRIPTION, FAILED_PAYMENT, SUCCESSFUL_PAYMENT, etc.), and Stay AI POSTs
+    signed payloads to it. No realtime, bidirectional, or streaming WebSocket
+    (ws:// or wss://) endpoint is documented on Stay AI's own API.
+  openSource: |
+    Stay AI is a proprietary commercial SaaS distributed as a Shopify app; no
+    open-source server component or self-hosted deployment is offered. The
+    documentation includes client-side recipe code (for example a Python/Flask
+    example for verifying inbound webhook JWTs), but the platform itself is not
+    open source.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.retextion.com/api/v2
+      documented: true
+      note: Primary API. Subscriptions, orders, selling plan groups, catalog, portal, settings, data export, and webhook management. API-key auth via X-RETEXTION-ACCESS-TOKEN header.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound event delivery. Stay AI POSTs event payloads to a merchant-registered URL, signed with a JWT in the x-retextion-webhook-token header (HS256, keyed by the merchant API key, with an iat claim). Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Stay AI's API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.retextion.com/api/v2/subscriptions
+    - GET    https://api.retextion.com/api/v2/subscriptions/{subscriptionId}
+    - POST   https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/cancel
+    - POST   https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/change-frequency
+    - POST   https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/get-order-now
+    - PUT    https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/lines/{lineId}
+    - POST   https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/remove-lines
+    - PUT    https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/order-notes
+    - POST   https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/meta-data
+    - POST   https://api.retextion.com/api/v2/subscriptions/{subscriptionId}/set-shipping-address
+    - POST   https://api.retextion.com/api/v2/subscriptions/generate-portal-link
+    - GET    https://api.retextion.com/api/v2/orders
+    - GET    https://api.retextion.com/api/v2/selling-plan-groups
+    - POST   https://api.retextion.com/api/v2/selling-plan-groups
+    - GET    https://api.retextion.com/api/v2/selling-plan-groups/{sellingPlanGroupId}
+    - PUT    https://api.retextion.com/api/v2/selling-plan-groups/{sellingPlanGroupId}
+    - GET    https://api.retextion.com/api/v2/products/catalog
+    - GET    https://api.retextion.com/api/v2/products/{productId}
+    - GET    https://api.retextion.com/api/v2/settings
+    - POST   https://api.retextion.com/api/v2/data/export
+    - GET    https://api.retextion.com/api/v2/webhooks
+    - POST   https://api.retextion.com/api/v2/webhooks
+    - DELETE https://api.retextion.com/api/v2/webhooks/{webhookId}
+sources:
+  - url: https://docs.stay.ai/llms.txt
+    type: Documentation
+    note: Agent-facing index of all documentation pages and endpoints.
+  - url: https://docs.stay.ai/recipes/authenticate-open-api
+    type: Documentation
+    note: Confirms base https://api.retextion.com/api/v2 and X-RETEXTION-ACCESS-TOKEN header auth; 401 on failure.
+  - url: https://docs.stay.ai/reference/query-all-subscriptions
+    type: APIReference
+    note: OpenAPI 3.1 snippet - GET /subscriptions with email/status/createdAt filters; apiKey header security scheme.
+  - url: https://docs.stay.ai/reference/cancel-subscription
+    type: APIReference
+    note: POST /subscriptions/{subscriptionId}/cancel with cancellationReasons body.
+  - url: https://docs.stay.ai/reference/query-orders
+    type: APIReference
+    note: GET /orders with created/updated date filters; server base .../api/v2.
+  - url: https://docs.stay.ai/reference/webhook-verification
+    type: Documentation
+    note: Inbound webhooks signed with a JWT in x-retextion-webhook-token (HS256, iat required, no exp). No WebSocket.
+  - url: https://docs.stay.ai/reference/create-webhook-subscription
+    type: APIReference
+    note: POST /webhooks with event and url body params; event types include SUBSCRIPTION, FAILED_PAYMENT, SUCCESSFUL_PAYMENT.
+  - url: https://apps.shopify.com/stayai-subscriptions
+    type: SignUp
+    note: Shopify App Store listing; pricing $499/month + 1% + $0.19 per transaction, 30-day free trial.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Stay AI's public API is
+    request/response REST, and its asynchronous events are delivered by
+    outbound HTTP webhooks rather than a server-push socket. No AsyncAPI
+    document was created because there is no WebSocket or SSE transport on Stay
+    AI's own API to model.

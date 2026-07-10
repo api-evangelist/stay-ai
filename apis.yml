@@ -1,0 +1,185 @@
+aid: stay-ai
+url: https://raw.githubusercontent.com/api-evangelist/stay-ai/refs/heads/main/apis.yml
+name: Stay AI
+kind: company
+description: Stay AI (formerly Retextion) is a subscription retention and growth
+  platform for Shopify direct-to-consumer brands. It pairs a no-code customer
+  portal with an ExperienceEngine for personalized promotions and upsells and a
+  RetentionEngine for AI-driven churn prevention. Stay AI exposes a documented
+  public REST API (base https://api.retextion.com/api/v2) authenticated with an
+  X-RETEXTION-ACCESS-TOKEN header, covering subscriptions, recurring orders,
+  selling plan groups, product catalog, the customer portal, account settings,
+  bulk data export, and JWT-signed outbound webhooks.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Subscriptions
+- Retention
+- Churn
+- Shopify
+- Ecommerce
+- DTC
+created: '2026-07-10'
+modified: '2026-07-10'
+specificationVersion: '0.19'
+apis:
+- aid: stay-ai:stay-ai-subscriptions-api
+  name: Stay AI Subscriptions API
+  tags:
+  - Subscriptions
+  - Subscribers
+  - Retention
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/query-all-subscriptions
+  baseURL: https://api.retextion.com/api/v2/subscriptions
+  properties:
+  - url: https://docs.stay.ai/reference/query-all-subscriptions
+    type: APIReference
+  - url: https://docs.stay.ai/recipes/authenticate-open-api
+    type: Documentation
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: Query subscriptions by customer email, status (ACTIVE, PAUSED,
+    CANCELLED), and created date, retrieve a subscription by ID, and manage the
+    subscription lifecycle - cancel, change frequency, update and remove line
+    items, set the shipping address, add order notes, and attach metadata.
+- aid: stay-ai:stay-ai-subscription-orders-api
+  name: Stay AI Subscription Orders API
+  tags:
+  - Orders
+  - Recurring Orders
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/query-orders
+  baseURL: https://api.retextion.com/api/v2
+  properties:
+  - url: https://docs.stay.ai/reference/query-orders
+    type: APIReference
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: Query recurring subscription orders by created and updated date
+    windows, and trigger a new recurring charge for a single subscription
+    ("order now"). Supports building order history and revenue reporting on top
+    of a merchant's subscription program.
+- aid: stay-ai:stay-ai-selling-plans-api
+  name: Stay AI Selling Plans API
+  tags:
+  - Selling Plans
+  - Catalog
+  - Configuration
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/query-selling-plan-groups
+  baseURL: https://api.retextion.com/api/v2/selling-plan-groups
+  properties:
+  - url: https://docs.stay.ai/reference/query-selling-plan-groups
+    type: APIReference
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: List selling plan groups, retrieve a group by ID, and create or
+    update selling plan groups - the Shopify selling-plan configuration that
+    defines subscription offers, frequencies, and discounts for products.
+- aid: stay-ai:stay-ai-catalog-api
+  name: Stay AI Catalog API
+  tags:
+  - Catalog
+  - Products
+  - Variants
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/get-catalog
+  baseURL: https://api.retextion.com/api/v2/products
+  properties:
+  - url: https://docs.stay.ai/reference/get-catalog
+    type: APIReference
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: Retrieve the entire subscription-eligible product catalog, or
+    fetch a single product and its variants by Shopify Product ID.
+- aid: stay-ai:stay-ai-customer-portal-api
+  name: Stay AI Customer Portal API
+  tags:
+  - Customer Portal
+  - Subscribers
+  - Self Service
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/generate-portal-link
+  baseURL: https://api.retextion.com/api/v2/subscriptions
+  properties:
+  - url: https://docs.stay.ai/reference/generate-portal-link
+    type: APIReference
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: Generate an authenticated no-code customer portal link for a
+    subscriber, identified by email or phone, so customers can self-manage their
+    subscriptions.
+- aid: stay-ai:stay-ai-webhooks-api
+  name: Stay AI Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/create-webhook-subscription
+  baseURL: https://api.retextion.com/api/v2/webhooks
+  properties:
+  - url: https://docs.stay.ai/reference/create-webhook-subscription
+    type: APIReference
+  - url: https://docs.stay.ai/reference/webhook-verification
+    type: Documentation
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: Manage webhook subscriptions - list, create, and delete outbound
+    webhooks for events such as SUBSCRIPTION, FAILED_PAYMENT, and
+    SUCCESSFUL_PAYMENT. Outbound webhook requests are signed with a JWT in the
+    x-retextion-webhook-token header for verification.
+- aid: stay-ai:stay-ai-account-data-api
+  name: Stay AI Account and Data API
+  tags:
+  - Account
+  - Settings
+  - Data Export
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.stay.ai/reference/query-account-settings
+  baseURL: https://api.retextion.com/api/v2
+  properties:
+  - url: https://docs.stay.ai/reference/query-account-settings
+    type: APIReference
+  - url: https://docs.stay.ai/reference/export-data
+    type: Documentation
+  - url: openapi/stay-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/stay-ai.postman_collection.json
+    type: PostmanCollection
+  description: Read merchant account settings and trigger bulk data exports for
+    subscriptions and orders, enabling analytics and reconciliation against
+    external data warehouses.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/stayai
+- type: Website
+  url: https://stay.ai
+- type: Documentation
+  url: https://docs.stay.ai
+- type: SignUp
+  url: https://apps.shopify.com/stayai-subscriptions
+- type: Plans
+  url: plans/stay-ai-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/stay-ai-rate-limits.yml
+- type: FinOps
+  url: finops/stay-ai-finops.yml
+- type: Blog
+  url: https://stay.ai/blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

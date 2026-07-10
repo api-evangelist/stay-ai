@@ -1,0 +1,107 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Stay AI
+providerId: stay-ai
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: true
+tags:
+- Subscriptions
+- Retention
+- Shopify
+- Ecommerce
+- Plans
+description: >-
+  Stay AI is sold as a Shopify app with a single published plan combining a
+  flat monthly platform fee with a per-transaction fee on processed
+  subscription orders. A 30-day free trial is offered. The API is included with
+  the platform subscription; API keys are created from Settings in the Stay
+  dashboard. Larger or custom arrangements are handled through Stay AI sales.
+notes: >-
+  Pricing reflects the Stay AI listing on the Shopify App Store and the Stay AI
+  pricing page as of 2026-07-10. Verify current figures directly with Stay AI,
+  as SaaS pricing changes frequently.
+sources:
+- https://apps.shopify.com/stayai-subscriptions
+- https://stay.ai/pricing/
+plans:
+- id: stay-ai-monthly
+  name: Monthly Plan
+  type: subscription
+  description: >-
+    Full access to the Stay AI subscription platform - customer portal,
+    ExperienceEngine, RetentionEngine, analytics, and the developer API -
+    billed as a flat monthly fee plus a per-transaction fee, with a 30-day free
+    trial.
+  entries:
+  - label: Platform Fee
+    name: platform_fee
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $499 per month
+    userMultiplied: false
+  - label: Transaction Fee (Percent)
+    name: transaction_fee_percent
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1% of each processed subscription transaction
+    userMultiplied: false
+  - label: Transaction Fee (Per Order)
+    name: transaction_fee_flat
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.19 per processed subscription transaction
+    userMultiplied: false
+  - label: Free Trial
+    name: free_trial
+    type: trial
+    metric: days
+    limit: 30
+    timeFrame: onetime
+    geo: global
+    unit: 1
+    price: $0 for the first 30 days
+    userMultiplied: false
+  elements:
+  - name: Customer Portal
+  - name: ExperienceEngine
+  - name: RetentionEngine
+  - name: Analytics
+  - name: Developer API
+  - name: Webhooks
+- id: stay-ai-custom
+  name: Custom / Enterprise
+  type: enterprise
+  description: >-
+    Custom terms for higher-volume brands and agencies, negotiated with Stay
+    AI. Contact Stay AI sales.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: Migration Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

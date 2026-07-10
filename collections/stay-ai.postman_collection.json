@@ -1,0 +1,340 @@
+{
+  "info": {
+    "name": "Stay AI API",
+    "description": "Postman collection for the Stay AI (Retextion) public REST API. Base URL https://api.retextion.com/api/v2. All requests authenticate with an X-RETEXTION-ACCESS-TOKEN header. Built from the Stay AI developer documentation at https://docs.stay.ai.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "X-RETEXTION-ACCESS-TOKEN", "type": "string" },
+      { "key": "value", "value": "{{access_token}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "base_url", "value": "https://api.retextion.com/api/v2" },
+    { "key": "access_token", "value": "" },
+    { "key": "subscriptionId", "value": "" },
+    { "key": "lineId", "value": "" },
+    { "key": "sellingPlanGroupId", "value": "" },
+    { "key": "productId", "value": "" },
+    { "key": "webhookId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "Query All Subscriptions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/subscriptions?status=ACTIVE",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions"],
+              "query": [
+                { "key": "email", "value": "", "disabled": true },
+                { "key": "status", "value": "ACTIVE" },
+                { "key": "createdAtMin", "value": "", "disabled": true },
+                { "key": "createdAtMax", "value": "", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Subscription by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Subscription",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancellationReasons\": [\"Too expensive\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/cancel",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "cancel"]
+            }
+          }
+        },
+        {
+          "name": "Change Frequency",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/change-frequency",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "change-frequency"]
+            }
+          }
+        },
+        {
+          "name": "Update Line",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/lines/{{lineId}}",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "lines", "{{lineId}}"]
+            }
+          }
+        },
+        {
+          "name": "Remove Lines",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/remove-lines",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "remove-lines"]
+            }
+          }
+        },
+        {
+          "name": "Update Order Notes",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/order-notes",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "order-notes"]
+            }
+          }
+        },
+        {
+          "name": "Add Meta Data Field",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/meta-data",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "meta-data"]
+            }
+          }
+        },
+        {
+          "name": "Set Shipping Address",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/set-shipping-address",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "set-shipping-address"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Subscription Order",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/subscriptions/{{subscriptionId}}/get-order-now",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "{{subscriptionId}}", "get-order-now"]
+            }
+          }
+        },
+        {
+          "name": "Query Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": ["{{base_url}}"],
+              "path": ["orders"],
+              "query": [
+                { "key": "createdAtMin", "value": "", "disabled": true },
+                { "key": "createdAtMax", "value": "", "disabled": true },
+                { "key": "updatedAtMin", "value": "", "disabled": true }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Selling Plans",
+      "item": [
+        {
+          "name": "Query Selling Plan Groups",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/selling-plan-groups",
+              "host": ["{{base_url}}"],
+              "path": ["selling-plan-groups"]
+            }
+          }
+        },
+        {
+          "name": "Query Selling Plan Group by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/selling-plan-groups/{{sellingPlanGroupId}}",
+              "host": ["{{base_url}}"],
+              "path": ["selling-plan-groups", "{{sellingPlanGroupId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Selling Plan Group",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/selling-plan-groups",
+              "host": ["{{base_url}}"],
+              "path": ["selling-plan-groups"]
+            }
+          }
+        },
+        {
+          "name": "Update Selling Plan Group",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{base_url}}/selling-plan-groups/{{sellingPlanGroupId}}",
+              "host": ["{{base_url}}"],
+              "path": ["selling-plan-groups", "{{sellingPlanGroupId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Catalog",
+      "item": [
+        {
+          "name": "Query Entire Catalog",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/products/catalog",
+              "host": ["{{base_url}}"],
+              "path": ["products", "catalog"]
+            }
+          }
+        },
+        {
+          "name": "Query Product in Catalog",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/products/{{productId}}",
+              "host": ["{{base_url}}"],
+              "path": ["products", "{{productId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Portal",
+      "item": [
+        {
+          "name": "Generate Portal Link",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"customer@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/subscriptions/generate-portal-link",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "generate-portal-link"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account and Data",
+      "item": [
+        {
+          "name": "Query Account Settings",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/settings",
+              "host": ["{{base_url}}"],
+              "path": ["settings"]
+            }
+          }
+        },
+        {
+          "name": "Export Data",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/data/export",
+              "host": ["{{base_url}}"],
+              "path": ["data", "export"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Get Webhook Subscriptions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            }
+          }
+        },
+        {
+          "name": "Create Webhook Subscription",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"SUBSCRIPTION\",\n  \"url\": \"https://example.com/webhooks/stay\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            }
+          }
+        },
+        {
+          "name": "Delete Webhook Subscription",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/webhooks/{{webhookId}}",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks", "{{webhookId}}"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

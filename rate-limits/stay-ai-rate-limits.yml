@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Stay AI
+providerId: stay-ai
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- Subscriptions
+- Retention
+- Shopify
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Stay AI's public developer documentation describes the REST API and its
+  X-RETEXTION-ACCESS-TOKEN authentication but does not publish specific
+  numeric rate-limit values (requests per minute/day or burst allowances) as
+  of the review date. Standard SaaS throttling and a 429 response on excess
+  are assumed but not confirmed in the docs. Values here are unreconciled
+  placeholders pending confirmation from Stay AI.
+notes: >-
+  No published rate-limit figures were found at docs.stay.ai. Confirm concrete
+  limits and headers with Stay AI support or account management before relying
+  on them.
+sources:
+- https://docs.stay.ai/recipes/authenticate-open-api
+- https://docs.stay.ai/reference/query-all-subscriptions
+responseCodes:
+  throttled: 429
+  unauthorized: 401
+limits:
+- name: Requests Per Minute
+  scope: apiKey
+  metric: requests
+  limit: not published
+  notes: No per-minute request ceiling documented in the public API reference.
+- name: Requests Per Day
+  scope: apiKey
+  metric: requests
+  limit: not published
+  notes: No per-day request ceiling documented in the public API reference.
+- name: Bulk Data Export
+  scope: account
+  metric: jobs
+  limit: not published
+  notes: Export Data is an asynchronous bulk operation; job concurrency limits are not documented.
+policies:
+- name: Authentication
+  description: All requests require a valid X-RETEXTION-ACCESS-TOKEN header; missing or invalid keys return 401.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,87 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Stay AI
+providerId: stay-ai
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: true
+tags:
+- Subscriptions
+- Retention
+- Shopify
+- Ecommerce
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Stay AI spend. Stay AI bills a flat monthly platform fee plus
+  a per-transaction fee (percentage plus flat amount) on processed subscription
+  orders, invoiced through the Shopify billing relationship. Cost scales with
+  subscription order volume rather than API call volume, so the primary cost
+  driver is the number and value of recurring transactions the platform
+  processes.
+notes: >-
+  Fee figures reflect the Shopify App Store listing and Stay AI pricing page as
+  of 2026-07-10 and should be verified during reconciliation.
+sources:
+- https://apps.shopify.com/stayai-subscriptions
+- https://stay.ai/pricing/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Stay AI
+serviceCategory: Ecommerce and Retail
+billingModel:
+  pricingCategory: Subscription-Plus-Usage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Recurring
+  - Usage
+meters:
+- name: platform_fee
+  description: Flat monthly platform subscription fee for the Stay AI app.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+- name: transaction_percent_fee
+  description: Percentage fee charged on the value of each processed subscription transaction.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - order
+- name: transaction_flat_fee
+  description: Flat per-transaction fee charged on each processed subscription order.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - order
+focusColumns:
+  ServiceName: Stay AI Subscriptions
+  ServiceCategory: Ecommerce and Retail
+  ProviderName: Stay AI
+  PublisherName: Stay AI
+  InvoiceIssuerName: Stay AI
+  BillingCurrency: USD
+  ChargeCategory: Recurring
+  PricingCategory: Subscription-Plus-Usage
+principles:
+- name: Visibility
+  description: Track monthly platform fee plus per-transaction fees against subscription order volume and processed revenue.
+- name: Allocation
+  description: Attribute Stay AI cost to the subscription program and to the brands or storefronts driving recurring orders.
+- name: Optimization
+  description: Use RetentionEngine and portal experiences to reduce churn and grow LTV so the per-transaction fee is offset by higher retained revenue.
+- name: Accountability
+  description: Review transaction-fee spend monthly against subscription revenue and retention KPIs.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
