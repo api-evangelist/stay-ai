@@ -164,6 +164,12 @@ apis:
     subscriptions and orders, enabling analytics and reconciliation against
     external data warehouses.
 common:
+- type: TrustCenter
+  url: security/stay-ai-trust-center.yml
+- type: DomainSecurity
+  url: security/stay-ai-domain-security.yml
+- type: Authentication
+  url: authentication/stay-ai-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/stayai
 - type: Website
