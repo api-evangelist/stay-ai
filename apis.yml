@@ -164,6 +164,8 @@ apis:
     subscriptions and orders, enabling analytics and reconciliation against
     external data warehouses.
 common:
+- type: AgenticAccess
+  url: agentic-access/stay-ai-agentic-access.yml
 - type: TrustCenter
   url: security/stay-ai-trust-center.yml
 - type: DomainSecurity
