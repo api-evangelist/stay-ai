@@ -1,0 +1,30 @@
+openapi: 3.1.0
+info:
+  title: Stay AI Account API
+  version: '2.0'
+  description: Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.
+  contact:
+    name: Stay AI
+    url: https://docs.stay.ai
+servers:
+- url: https://api.retextion.com/api/v2
+security:
+- accessToken: []
+tags:
+- name: Account
+paths:
+  /settings:
+    get:
+      operationId: query-account-settings
+      summary: Query Account Settings
+      tags:
+      - Account
+      responses:
+        '200':
+          description: Merchant account settings
+components:
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: X-RETEXTION-ACCESS-TOKEN

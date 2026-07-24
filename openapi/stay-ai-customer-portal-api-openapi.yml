@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: Stay AI Account Customer Portal API
+  version: '2.0'
+  description: Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.
+  contact:
+    name: Stay AI
+    url: https://docs.stay.ai
+servers:
+- url: https://api.retextion.com/api/v2
+security:
+- accessToken: []
+tags:
+- name: Customer Portal
+paths:
+  /subscriptions/generate-portal-link:
+    post:
+      operationId: generate-portal-link
+      summary: Generate Portal Link
+      tags:
+      - Customer Portal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Customer email address
+                phone:
+                  type: string
+                  description: Customer phone number
+      responses:
+        '200':
+          description: A customer portal link
+components:
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: X-RETEXTION-ACCESS-TOKEN

@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: Stay AI Account Catalog API
+  version: '2.0'
+  description: Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.
+  contact:
+    name: Stay AI
+    url: https://docs.stay.ai
+servers:
+- url: https://api.retextion.com/api/v2
+security:
+- accessToken: []
+tags:
+- name: Catalog
+paths:
+  /products/catalog:
+    get:
+      operationId: get-catalog
+      summary: Query Entire Catalog
+      description: Retrieve the details for the products in your catalog.
+      tags:
+      - Catalog
+      responses:
+        '200':
+          description: The product catalog
+  /products/{productId}:
+    get:
+      operationId: get-catalog-product-by-id
+      summary: Query Product in Catalog
+      description: Retrieve details for a specific product and its variants from your catalog.
+      tags:
+      - Catalog
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        description: Shopify Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested product and its variants
+components:
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: X-RETEXTION-ACCESS-TOKEN

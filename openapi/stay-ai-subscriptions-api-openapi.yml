@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: Stay AI Account Subscriptions API
+  version: '2.0'
+  description: Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.
+  contact:
+    name: Stay AI
+    url: https://docs.stay.ai
+servers:
+- url: https://api.retextion.com/api/v2
+security:
+- accessToken: []
+tags:
+- name: Subscriptions
+paths:
+  /subscriptions:
+    get:
+      operationId: query-all-subscriptions
+      summary: Query All Subscriptions
+      tags:
+      - Subscriptions
+      parameters:
+      - name: email
+        in: query
+        description: Customer email
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Subscription status (ACTIVE or PAUSED or CANCELLED)
+        schema:
+          type: string
+      - name: createdAtMin
+        in: query
+        description: Created date min timestamp
+        schema:
+          type: integer
+          format: int64
+      - name: createdAtMax
+        in: query
+        description: Created date max timestamp
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: A list of subscriptions
+  /subscriptions/{subscriptionId}:
+    get:
+      operationId: query-subscription-by-id
+      summary: Query Subscription by ID
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: Internal or external subscription ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested subscription
+  /subscriptions/{subscriptionId}/cancel:
+    post:
+      operationId: cancel-subscription
+      summary: Cancel Subscription
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: Internal or external subscription ID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cancellationReasons:
+                  type: array
+                  description: A list of reasons for cancellation of the subscription
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Cancellation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /subscriptions/{subscriptionId}/change-frequency:
+    post:
+      operationId: change-frequency
+      summary: Change Frequency
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: Internal or external subscription ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Frequency updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /subscriptions/{subscriptionId}/lines/{lineId}:
+    put:
+      operationId: update-line
+      summary: Update Line
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: lineId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Line item updated
+  /subscriptions/{subscriptionId}/remove-lines:
+    post:
+      operationId: remove-lines
+      summary: Remove Lines
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Line items removed
+  /subscriptions/{subscriptionId}/order-notes:
+    put:
+      operationId: update-order-notes
+      summary: Update Order Notes
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order notes updated
+  /subscriptions/{subscriptionId}/meta-data:
+    post:
+      operationId: add-meta-data
+      summary: Add Meta Data Field
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Metadata field added
+  /subscriptions/{subscriptionId}/set-shipping-address:
+    post:
+      operationId: set-shipping-address
+      summary: Set Shipping Address
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Shipping address updated
+components:
+  schemas:
+    Success:
+      type: object
+      properties:
+        success:
+          type: boolean
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: X-RETEXTION-ACCESS-TOKEN

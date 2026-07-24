@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Stay AI Account Orders API
+  version: '2.0'
+  description: Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.
+  contact:
+    name: Stay AI
+    url: https://docs.stay.ai
+servers:
+- url: https://api.retextion.com/api/v2
+security:
+- accessToken: []
+tags:
+- name: Orders
+paths:
+  /subscriptions/{subscriptionId}/get-order-now:
+    post:
+      operationId: create-subscription-order
+      summary: Create Subscription Order
+      description: Initiates a new recurring charge for a single subscription.
+      tags:
+      - Orders
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: Internal or external subscription ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /orders:
+    get:
+      operationId: query-orders
+      summary: Query Orders
+      tags:
+      - Orders
+      parameters:
+      - name: createdAtMin
+        in: query
+        description: Created date min timestamp
+        schema:
+          type: integer
+          format: int64
+      - name: createdAtMax
+        in: query
+        description: Created date max timestamp
+        schema:
+          type: integer
+          format: int64
+      - name: updatedAtMin
+        in: query
+        description: Updated date min timestamp
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: A list of recurring orders
+components:
+  schemas:
+    Success:
+      type: object
+      properties:
+        success:
+          type: boolean
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: X-RETEXTION-ACCESS-TOKEN
