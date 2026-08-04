@@ -1,0 +1,28 @@
+{
+  "provider": "stay-ai",
+  "sources": [
+    "stay-ai-account-api-openapi.yml",
+    "stay-ai-catalog-api-openapi.yml",
+    "stay-ai-customer-portal-api-openapi.yml",
+    "stay-ai-data-export-api-openapi.yml",
+    "stay-ai-orders-api-openapi.yml",
+    "stay-ai-selling-plans-api-openapi.yml",
+    "stay-ai-subscriptions-api-openapi.yml",
+    "stay-ai-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "stay-ai-account-api-openapi.yml",
+    "stay-ai-catalog-api-openapi.yml",
+    "stay-ai-customer-portal-api-openapi.yml",
+    "stay-ai-data-export-api-openapi.yml",
+    "stay-ai-orders-api-openapi.yml",
+    "stay-ai-selling-plans-api-openapi.yml",
+    "stay-ai-subscriptions-api-openapi.yml",
+    "stay-ai-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
