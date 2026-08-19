@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Customer Portal API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Portal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Portal Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/generate-portal-link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate Portal Link"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

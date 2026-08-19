@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Webhooks API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Webhook Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/webhooks"
+          },
+          "docs": "Get Webhook Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Create Webhook Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Webhook Subscription"
+        },
+        {
+          "info": {
+            "name": "Delete Webhook Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.retextion.com/api/v2/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Webhook Subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

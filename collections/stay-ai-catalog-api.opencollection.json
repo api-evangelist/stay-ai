@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Catalog API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query Entire Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/products/catalog"
+          },
+          "docs": "Retrieve the details for the products in your catalog."
+        },
+        {
+          "info": {
+            "name": "Query Product in Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/products/:productId",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Shopify Product ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific product and its variants from your catalog."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

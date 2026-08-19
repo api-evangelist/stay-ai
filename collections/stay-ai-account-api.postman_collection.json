@@ -1,0 +1,114 @@
+{
+  "item": [
+    {
+      "id": "66372a42-eab0-4194-8ce0-827486377c78",
+      "name": "Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5bce1d5-8f11-4941-a01c-bdf9afbf7a5e",
+          "name": "Query Account Settings",
+          "request": {
+            "name": "Query Account Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef10e16c-34ee-4543-9d50-b8b87863b10e",
+              "name": "Merchant account settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.retextion.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RETEXTION-ACCESS-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bb86d444-2aff-4c81-a8b3-416c2ba3058b",
+    "name": "Stay AI Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.\n\nContact Support:\n Name: Stay AI",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Selling Plans API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Selling Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query Selling Plan Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/selling-plan-groups"
+          },
+          "docs": "Query Selling Plan Groups"
+        },
+        {
+          "info": {
+            "name": "Create Selling Plan Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/selling-plan-groups"
+          },
+          "docs": "Create Selling Plan Group"
+        },
+        {
+          "info": {
+            "name": "Query Selling Plan Group by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/selling-plan-groups/:sellingPlanGroupId",
+            "params": [
+              {
+                "name": "sellingPlanGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Query Selling Plan Group by ID"
+        },
+        {
+          "info": {
+            "name": "Update Selling Plan Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.retextion.com/api/v2/selling-plan-groups/:sellingPlanGroupId",
+            "params": [
+              {
+                "name": "sellingPlanGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update Selling Plan Group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

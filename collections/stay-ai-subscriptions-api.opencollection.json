@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Subscriptions API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query All Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/subscriptions",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Customer email"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Subscription status (ACTIVE or PAUSED or CANCELLED)"
+              },
+              {
+                "name": "createdAtMin",
+                "value": "",
+                "type": "query",
+                "description": "Created date min timestamp"
+              },
+              {
+                "name": "createdAtMax",
+                "value": "",
+                "type": "query",
+                "description": "Created date max timestamp"
+              }
+            ]
+          },
+          "docs": "Query All Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Query Subscription by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Internal or external subscription ID"
+              }
+            ]
+          },
+          "docs": "Query Subscription by ID"
+        },
+        {
+          "info": {
+            "name": "Cancel Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/cancel",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Internal or external subscription ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel Subscription"
+        },
+        {
+          "info": {
+            "name": "Change Frequency",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/change-frequency",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Internal or external subscription ID"
+              }
+            ]
+          },
+          "docs": "Change Frequency"
+        },
+        {
+          "info": {
+            "name": "Update Line",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/lines/:lineId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update Line"
+        },
+        {
+          "info": {
+            "name": "Remove Lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/remove-lines",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Lines"
+        },
+        {
+          "info": {
+            "name": "Update Order Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/order-notes",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update Order Notes"
+        },
+        {
+          "info": {
+            "name": "Add Meta Data Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/meta-data",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add Meta Data Field"
+        },
+        {
+          "info": {
+            "name": "Set Shipping Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/set-shipping-address",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set Shipping Address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

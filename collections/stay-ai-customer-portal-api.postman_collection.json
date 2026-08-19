@@ -1,0 +1,139 @@
+{
+  "item": [
+    {
+      "id": "3f1e435a-63e8-4046-b3da-047d4beca3f6",
+      "name": "Customer Portal",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3bcffe36-7346-4f7c-8b7d-96e0f3572481",
+          "name": "Generate Portal Link",
+          "request": {
+            "name": "Generate Portal Link",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                "generate-portal-link"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "144eb4ad-bec7-44b4-9bba-8c1f78456f0c",
+              "name": "A customer portal link",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "generate-portal-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.retextion.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RETEXTION-ACCESS-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "63aa93cb-f869-4faa-88ec-ef8463cf5cd0",
+    "name": "Stay AI Account Customer Portal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.\n\nContact Support:\n Name: Stay AI",
+      "type": "text/plain"
+    }
+  }
+}

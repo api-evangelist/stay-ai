@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Orders API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Subscription Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/subscriptions/:subscriptionId/get-order-now",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Internal or external subscription ID"
+              }
+            ]
+          },
+          "docs": "Initiates a new recurring charge for a single subscription."
+        },
+        {
+          "info": {
+            "name": "Query Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.retextion.com/api/v2/orders",
+            "params": [
+              {
+                "name": "createdAtMin",
+                "value": "",
+                "type": "query",
+                "description": "Created date min timestamp"
+              },
+              {
+                "name": "createdAtMax",
+                "value": "",
+                "type": "query",
+                "description": "Created date max timestamp"
+              },
+              {
+                "name": "updatedAtMin",
+                "value": "",
+                "type": "query",
+                "description": "Updated date min timestamp"
+              }
+            ]
+          },
+          "docs": "Query Orders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,119 @@
+{
+  "item": [
+    {
+      "id": "115506d7-155a-4d9e-8523-84a4fc9113bb",
+      "name": "Data Export",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6afd007-b487-450d-a732-e02ec5f138e9",
+          "name": "Export Data",
+          "request": {
+            "name": "Export Data",
+            "description": {
+              "content": "Trigger a bulk data export for subscriptions and orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b53081c2-f99d-471e-8d74-ced24ae12207",
+              "name": "Export job accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.retextion.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RETEXTION-ACCESS-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3cb9101a-a47a-431a-9e46-9578a8e90945",
+    "name": "Stay AI Account Data Export API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.\n\nContact Support:\n Name: Stay AI",
+      "type": "text/plain"
+    }
+  }
+}

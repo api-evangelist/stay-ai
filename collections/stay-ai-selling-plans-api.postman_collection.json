@@ -1,0 +1,345 @@
+{
+  "item": [
+    {
+      "id": "a3ab00c2-81fa-4119-9a7f-55e419590b0f",
+      "name": "Selling Plans",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37fe8204-3293-4bc4-b1a8-1699afbe241a",
+          "name": "Query Selling Plan Groups",
+          "request": {
+            "name": "Query Selling Plan Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "selling-plan-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67bb5d88-375f-42ca-b51e-e1a8a5b2ce21",
+              "name": "A list of selling plan groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "selling-plan-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cd5495e-60dc-48ad-b7a1-7db8d564f5ff",
+          "name": "Create Selling Plan Group",
+          "request": {
+            "name": "Create Selling Plan Group",
+            "description": {},
+            "url": {
+              "path": [
+                "selling-plan-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e63fe9e0-07f5-409b-934f-6411601d707a",
+              "name": "Selling plan group created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "selling-plan-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47d8c041-8195-4ea8-9c42-d5c6aff2e7c8",
+          "name": "Query Selling Plan Group by ID",
+          "request": {
+            "name": "Query Selling Plan Group by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "selling-plan-groups",
+                ":sellingPlanGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sellingPlanGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9af27631-a128-4c19-8d01-ab3f1eeecacd",
+              "name": "The requested selling plan group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "selling-plan-groups",
+                    ":sellingPlanGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sellingPlanGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a29ed90a-b63e-43e3-9bcb-65c39fe615f4",
+          "name": "Update Selling Plan Group",
+          "request": {
+            "name": "Update Selling Plan Group",
+            "description": {},
+            "url": {
+              "path": [
+                "selling-plan-groups",
+                ":sellingPlanGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sellingPlanGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15d697ed-5e43-47b6-8518-5bb90448c9a7",
+              "name": "Selling plan group updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "selling-plan-groups",
+                    ":sellingPlanGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sellingPlanGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RETEXTION-ACCESS-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.retextion.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RETEXTION-ACCESS-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b24afc2-6e5c-4c17-bad6-73572c178500",
+    "name": "Stay AI Account Selling Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Documented public REST API for Stay AI (formerly Retextion), a subscription retention and growth platform for Shopify DTC brands. All endpoints are authenticated with an API key sent in the X-RETEXTION-ACCESS-TOKEN header. Paths, methods, and query/path parameters are taken from the Stay AI developer documentation at https://docs.stay.ai; request and response body schemas are simplified representations - consult the live reference for full payload details.\n\nContact Support:\n Name: Stay AI",
+      "type": "text/plain"
+    }
+  }
+}

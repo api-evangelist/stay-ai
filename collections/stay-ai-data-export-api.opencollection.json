@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stay AI Account Data Export API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RETEXTION-ACCESS-TOKEN",
+      "value": "{{X-RETEXTION-ACCESS-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.retextion.com/api/v2/data/export"
+          },
+          "docs": "Trigger a bulk data export for subscriptions and orders."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
