@@ -25,6 +25,13 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stay-ai.png
 tags:
+- Subscription
+- Retention
+- Churn
+- Shopify
+- E-Commerce
+- Direct to Consumer
+tags_raw:
 - Subscriptions
 - Retention
 - Churn
@@ -169,6 +176,8 @@ apis:
   humanURL: https://docs.stay.ai/reference/query-all-subscriptions
   baseURL: https://api.retextion.com/api/v2/subscriptions
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -233,6 +242,8 @@ apis:
   humanURL: https://docs.stay.ai/reference/query-all-subscriptions
   baseURL: https://api.retextion.com/api/v2/subscriptions
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -265,6 +276,8 @@ apis:
   humanURL: https://docs.stay.ai/reference/query-all-subscriptions
   baseURL: https://api.retextion.com/api/v2/subscriptions
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
