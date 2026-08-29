@@ -10,6 +10,18 @@ description: Stay AI (formerly Retextion) is a subscription retention and growth
   X-RETEXTION-ACCESS-TOKEN header, covering subscriptions, recurring orders,
   selling plan groups, product catalog, the customer portal, account settings,
   bulk data export, and JWT-signed outbound webhooks.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
