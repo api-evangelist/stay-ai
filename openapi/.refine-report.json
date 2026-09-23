@@ -1,14 +1,7 @@
 {
   "provider": "stay-ai",
   "sources": [
-    "stay-ai-account-api-openapi.yml",
-    "stay-ai-catalog-api-openapi.yml",
-    "stay-ai-customer-portal-api-openapi.yml",
-    "stay-ai-data-export-api-openapi.yml",
-    "stay-ai-orders-api-openapi.yml",
-    "stay-ai-selling-plans-api-openapi.yml",
-    "stay-ai-subscriptions-api-openapi.yml",
-    "stay-ai-webhooks-api-openapi.yml"
+    "_original/stay-ai-openapi.yml"
   ],
   "outputs": [
     "stay-ai-account-api-openapi.yml",
@@ -23,6 +16,27 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "stay-ai-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "stay-ai-openapi.yml: declared missing tag: Account",
+    "stay-ai-openapi.yml: declared missing tag: Catalog",
+    "stay-ai-openapi.yml: declared missing tag: Customer Portal",
+    "stay-ai-openapi.yml: declared missing tag: Data Export",
+    "stay-ai-openapi.yml: declared missing tag: Orders",
+    "stay-ai-openapi.yml: declared missing tag: Selling Plans",
+    "stay-ai-openapi.yml: declared missing tag: Subscriptions",
+    "stay-ai-openapi.yml: declared missing tag: Webhooks",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "stay-ai-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-customer-portal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-data-export-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-selling-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stay-ai-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
