@@ -1,0 +1,47 @@
+slug: stay-ai
+provider: Stay AI
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Subscriptions
+  spec_file: stay-ai-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.85
+  evidence: POST /subscriptions/{subscriptionId}/cancel 'Cancel Subscription'; POST /subscriptions/{subscriptionId}/change-frequency
+    'Change Frequency'; POST /subscriptions/{subscriptionId}/remove-lines 'Remove Lines'
+  reason: 'Operations span the in-life subscription contract: query, cancel, change frequency, add/remove
+    lines, shipping address. This is squarely subscription lifecycle management; it straddles Modification
+    and Cancellation so the L1 is given without forcing an L2.'
+- tag: Webhooks
+  spec_file: stay-ai-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.8
+  evidence: GET /webhooks 'Get Webhook Subscriptions'; POST /webhooks 'Create Webhook Subscription'; DELETE
+    /webhooks/{webhookId} 'Delete Webhook Subscription'
+  reason: Explicitly the lifecycle of outbound webhook/event subscriptions for integrators of the platform,
+    matching Webhook & Event Subscription Management.
+- tag: Selling Plans
+  spec_file: stay-ai-selling-plans-api-openapi.yml
+  capability_id: BC-4240.10
+  capability_id_l1: BC-4240
+  capability_name: Plan & Entitlement Design
+  confidence: 0.72
+  evidence: POST /selling-plan-groups 'Create Selling Plan Group'; PUT /selling-plan-groups/{sellingPlanGroupId}
+    'Update Selling Plan Group'
+  reason: Selling plan groups are the definition of subscription plans (frequency, discount terms) that
+    customers can subscribe to — plan design rather than any individual subscriber's contract. Maps to
+    Plan & Entitlement Design, acknowledging the DTC-commerce rather than SaaS-seat framing.

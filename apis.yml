@@ -317,6 +317,9 @@ apis:
   - type: Documentation
     url: https://docs.stay.ai/reference/export-data
 common:
+- type: CapabilityMap
+  url: capabilities/stay-ai-capability-edges.yml
+  name: Stay AI Business Capability Map
 - type: AgenticAccess
   url: agentic-access/stay-ai-agentic-access.yml
 - type: TrustCenter
