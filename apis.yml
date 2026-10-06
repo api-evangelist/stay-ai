@@ -51,7 +51,7 @@ tags_raw:
 - Ecommerce
 - DTC
 created: '2026-07-10'
-modified: '2026-07-10'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: stay-ai:stay-ai-account-api
@@ -317,6 +317,10 @@ apis:
   - type: Documentation
     url: https://docs.stay.ai/reference/export-data
 common:
+- url: https://stay.ai/blog/
+  type: Blog
+- url: https://stay.ai/blog/feed/
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/stay-ai-capability-edges.yml
   name: Stay AI Business Capability Map
