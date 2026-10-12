@@ -1,0 +1,20 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/stay-ai/integrations
+- https://zapier.com/apps/stay/integrations
+- https://n8n.io/integrations/stay-ai/
+- https://n8n.io/integrations/stay/
+- https://composio.dev/toolkits/stay-ai
+- https://monid.ai/tools/stay-ai
+checked:
+- https://composio.dev/toolkits/stay-ai
+- https://monid.ai/tools/stay-ai
+- https://n8n.io/integrations/stay-ai/
+- https://n8n.io/integrations/stay/
+- https://zapier.com/apps/stay-ai/integrations
+- https://zapier.com/apps/stay/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
