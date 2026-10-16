@@ -1,0 +1,28 @@
+{
+  "repo": "stay-ai",
+  "feeds": [
+    {
+      "source": "https://stay.ai/blog/",
+      "feed_url": "https://stay.ai/blog/feed/",
+      "title": "",
+      "saved": 8,
+      "method": "discovered"
+    },
+    {
+      "source": "https://stay.ai/blog/feed/",
+      "feed_url": "https://stay.ai/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://stay.ai/blog",
+      "feed_url": "https://stay.ai/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 8,
+  "fetched": "2026-10-10T13:15:00Z"
+}
