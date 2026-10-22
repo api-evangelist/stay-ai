@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/stay-ai/integrations
 - https://zapier.com/apps/stay/integrations
@@ -8,6 +8,7 @@ source:
 - https://composio.dev/toolkits/stay-ai
 - https://monid.ai/tools/stay-ai
 checked:
+- gorgias/integrations/gorgias-integration-edges.yml
 - https://composio.dev/toolkits/stay-ai
 - https://monid.ai/tools/stay-ai
 - https://n8n.io/integrations/stay-ai/
@@ -16,5 +17,21 @@ checked:
 - https://zapier.com/apps/stay/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Gorgias (own)
+  partner: gorgias
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.gorgias.com/apps/stay-ai
+  mirror_of: gorgias/integrations/gorgias-integration-edges.yml
+  apps:
+  - Stay Ai
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
 templates: []
