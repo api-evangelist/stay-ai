@@ -1,4 +1,4 @@
-# Stay AI (stay-ai)
+# Stay AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,102 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Stay AI (formerly Retextion) is a subscription retention and growth platform for Shopify direct-to-consumer (DTC) brands. It pairs a no-code, fully customizable customer portal with an **ExperienceEngine** for personalized promotions and upsells across the subscriber journey and a **RetentionEngine** for AI-driven passive and active churn prevention, plus analytics for forecasting subscription revenue.
+Stay AI (formerly Retextion) is a subscription retention and growth platform for Shopify direct-to-consumer brands. It pairs a no-code customer portal with an ExperienceEngine for personalized promotions and upsells and a RetentionEngine for AI-driven churn prevention. Stay AI exposes a documented public REST API (base https://api.retextion.com/api/v2) authenticated with an X-RETEXTION-ACCESS-TOKEN header, covering subscriptions, recurring orders, selling plan groups, product catalog, the customer portal, account settings, bulk data export, and JWT-signed outbound webhooks.
 
-Stay AI exposes a **documented public REST API** at base `https://api.retextion.com/api/v2`, authenticated with an API key sent in the `X-RETEXTION-ACCESS-TOKEN` header. API keys are created from **Settings > API keys** in the Stay dashboard. The API is included with the platform subscription (no separate API-only tier). Full reference documentation lives at [https://docs.stay.ai](https://docs.stay.ai), with an agent-facing index at [https://docs.stay.ai/llms.txt](https://docs.stay.ai/llms.txt).
+**Areas:** Subscription · Retention · Churn · Shopify · E-Commerce · Direct to Consumer
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/stay-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/stay-ai/refs/heads/main/apis.yml)
+## Stay AI on APIs.io
 
-## Access Model
+Everything profiled for Stay AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/stay-ai/](https://apis.io/providers/stay-ai/)** — or go straight to one of the APIs or properties below.
 
-- **Public, documented REST API** — not gated behind a partner-only program. Any merchant on the Stay AI Shopify app can generate an API key and call the endpoints below.
-- **Authentication** — API key in the `X-RETEXTION-ACCESS-TOKEN` request header. Invalid or missing keys return `401 Unauthorized`.
-- **Webhooks** — Stay AI delivers asynchronous events (e.g. `SUBSCRIPTION`, `FAILED_PAYMENT`, `SUCCESSFUL_PAYMENT`) via **outbound HTTP webhooks** to a merchant-registered URL. Each request is signed with a JWT (HS256, `iat` required, no `exp`) in the `x-retextion-webhook-token` header, keyed by the merchant API key, for verification.
-- **No public WebSocket API** — the platform's public surface is request/response REST plus outbound webhooks; there is no documented `ws://`/`wss://` transport (see `review.yml`).
+### APIs (8)
 
-The paths, methods, query parameters, path parameters, and authentication in this entry are taken directly from the Stay AI developer documentation. The request/response **body schemas** in `openapi/stay-ai-openapi.yml` are simplified representations of the documented surface; consult the live reference for full payload details.
+- [Stay AI Account API](https://apis.io/apis/stay-ai/stay-ai-account-api/) — The Account API from Stay AI — 1 operation(s) for account.
+- [Stay AI Catalog API](https://apis.io/apis/stay-ai/stay-ai-catalog-api/) — The Catalog API from Stay AI — 2 operation(s) for catalog.
+- [Stay AI Customer Portal API](https://apis.io/apis/stay-ai/stay-ai-customer-portal-api/) — The Customer Portal API from Stay AI — 1 operation(s) for customer portal.
+- [Stay AI Data Export API](https://apis.io/apis/stay-ai/stay-ai-data-export-api/) — The Data Export API from Stay AI — 1 operation(s) for data export.
+- [Stay AI Orders API](https://apis.io/apis/stay-ai/stay-ai-orders-api/) — The Orders API from Stay AI — 2 operation(s) for orders.
+- [Stay AI Selling Plans API](https://apis.io/apis/stay-ai/stay-ai-selling-plans-api/) — The Selling Plans API from Stay AI — 2 operation(s) for selling plans.
+- [Stay AI Subscriptions API](https://apis.io/apis/stay-ai/stay-ai-subscriptions-api/) — The Subscriptions API from Stay AI — 9 operation(s) for subscriptions.
+- [Stay AI Webhooks API](https://apis.io/apis/stay-ai/stay-ai-webhooks-api/) — The Webhooks API from Stay AI — 2 operation(s) for webhooks.
 
-## Tags
+### Published properties
 
-- Subscriptions
-- Retention
-- Churn
-- Shopify
-- Ecommerce
-- DTC
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Agentic access (1)
 
-- **Created:** 2026-07-10
-- **Modified:** 2026-07-10
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs
+- [Stay Ai Agentic Access](https://apis.io/agentic-access/stay-ai/stay-ai-agentic-access/)
 
-### Stay AI Subscriptions API
+#### Collections (8)
 
-Query subscriptions by customer email, status (`ACTIVE`, `PAUSED`, `CANCELLED`), and created date; retrieve a subscription by ID; and manage the subscription lifecycle — cancel, change frequency, update and remove line items, set the shipping address, add order notes, and attach metadata.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://docs.stay.ai/reference/query-all-subscriptions](https://docs.stay.ai/reference/query-all-subscriptions)
-- **Base URL:** `https://api.retextion.com/api/v2/subscriptions`
+- [Stay AI Account API](https://apis.io/collections/stay-ai/open-stay-ai-account-api/)
+- [Stay AI Account Catalog API](https://apis.io/collections/stay-ai/open-stay-ai-catalog-api/)
+- [Stay AI Account Customer Portal API](https://apis.io/collections/stay-ai/open-stay-ai-customer-portal-api/)
+- [Stay AI Account Data Export API](https://apis.io/collections/stay-ai/open-stay-ai-data-export-api/)
+- [Stay AI Account Orders API](https://apis.io/collections/stay-ai/open-stay-ai-orders-api/)
+- [Stay AI Account Selling Plans API](https://apis.io/collections/stay-ai/open-stay-ai-selling-plans-api/)
+- [Stay AI Account Subscriptions API](https://apis.io/collections/stay-ai/open-stay-ai-subscriptions-api/)
+- [Stay AI Account Webhooks API](https://apis.io/collections/stay-ai/open-stay-ai-webhooks-api/)
 
-### Stay AI Subscription Orders API
+#### Security (3)
 
-Query recurring subscription orders by created and updated date windows, and trigger a new recurring charge for a single subscription ("order now").
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.stay.ai/reference/query-orders](https://docs.stay.ai/reference/query-orders)
-- **Base URL:** `https://api.retextion.com/api/v2`
+- [Stay Ai Authentication](https://apis.io/security/stay-ai/stay-ai-authentication/)
+- [Stay Ai Domain Security](https://apis.io/security/stay-ai/stay-ai-domain-security/)
+- [Stay Ai Trust Center](https://apis.io/security/stay-ai/stay-ai-trust-center/)
 
-### Stay AI Selling Plans API
+#### Plans and pricing (1)
 
-List selling plan groups, retrieve a group by ID, and create or update selling plan groups — the Shopify selling-plan configuration defining subscription offers, frequencies, and discounts.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.stay.ai/reference/query-selling-plan-groups](https://docs.stay.ai/reference/query-selling-plan-groups)
-- **Base URL:** `https://api.retextion.com/api/v2/selling-plan-groups`
+- [Stay Ai Plans Pricing](https://apis.io/plans/stay-ai/stay-ai-plans-pricing/)
 
-### Stay AI Catalog API
+#### Rate limits (1)
 
-Retrieve the entire subscription-eligible product catalog, or fetch a single product and its variants by Shopify Product ID.
+Published request limits.
 
-- **Human URL:** [https://docs.stay.ai/reference/get-catalog](https://docs.stay.ai/reference/get-catalog)
-- **Base URL:** `https://api.retextion.com/api/v2/products`
+- [Stay Ai Rate Limits](https://apis.io/rate-limits/stay-ai/stay-ai-rate-limits/)
 
-### Stay AI Customer Portal API
+#### FinOps (1)
 
-Generate an authenticated no-code customer portal link for a subscriber, identified by email or phone, so customers can self-manage their subscriptions.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://docs.stay.ai/reference/generate-portal-link](https://docs.stay.ai/reference/generate-portal-link)
-- **Base URL:** `https://api.retextion.com/api/v2/subscriptions`
+- [Stay Ai Finops](https://apis.io/finops/stay-ai/stay-ai-finops/)
 
-### Stay AI Webhooks API
+## Where to find this API
 
-List, create, and delete outbound webhook subscriptions for events such as `SUBSCRIPTION`, `FAILED_PAYMENT`, and `SUCCESSFUL_PAYMENT`. Delivered requests are JWT-signed for verification.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://docs.stay.ai/reference/create-webhook-subscription](https://docs.stay.ai/reference/create-webhook-subscription)
-- **Base URL:** `https://api.retextion.com/api/v2/webhooks`
-
-### Stay AI Account and Data API
-
-Read merchant account settings and trigger bulk data exports for subscriptions and orders.
-
-- **Human URL:** [https://docs.stay.ai/reference/query-account-settings](https://docs.stay.ai/reference/query-account-settings)
-- **Base URL:** `https://api.retextion.com/api/v2`
-
-## Pricing
-
-Stay AI is sold through the Shopify App Store with a single published plan: **$499 / month + 1% + $0.19 per transaction**, with a **30-day free trial**. The API is included with the platform subscription. Larger or custom arrangements are handled through Stay AI sales. See `plans/stay-ai-plans-pricing.yml` and `finops/stay-ai-finops.yml`.
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/stayai)
 - [Website](https://stay.ai)
 - [Documentation](https://docs.stay.ai)
-- [Sign Up (Shopify App Store)](https://apps.shopify.com/stayai-subscriptions)
-- [Plans](plans/stay-ai-plans-pricing.yml)
-- [Rate Limits](rate-limits/stay-ai-rate-limits.yml)
-- [Fin Ops](finops/stay-ai-finops.yml)
-- [Blog](https://stay.ai/blog)
+- [Sign up](https://apps.shopify.com/stayai-subscriptions)
+- [Blog](https://stay.ai/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 26.3 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/stay-ai/](https://apis.io/providers/stay-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Stay AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/stay-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
